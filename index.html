@@ -340,9 +340,15 @@
         </div>
 
         <div class="footer-bottom">
-            © 2024 ASD Zenith — Tutti i diritti riservati
+            © <span id="y"></span> ASD Zenith — Tutti i diritti riservati
         </div>
     </footer>
+
+    <!-- Anno nel footer -->
+    <script>
+        const yearEl = document.getElementById('y');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+    </script>
 
     <!-- JS unificato: rimuovi app.js e menu-mobile.js dalle pagine -->
     <script src="assets/js/app.js" defer></script>

@@ -18,7 +18,7 @@
 
 
     <!-- PWA & icone (consigliato) -->
-    <link rel="manifest" href="/seo/manifest.json">
+    <link rel="manifest" href="seo/manifest.json">
     <meta name="theme-color" content="#1f6f66">
     <link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
 
@@ -198,14 +198,16 @@
         </div>
 
         <div class="footer-bottom">
-            © 2024 ASD Zenith — Tutti i diritti riservati
+            © <span id="y"></span> ASD Zenith — Tutti i diritti riservati
         </div>
     </footer>
 
     <!-- Anno nel footer -->
     <script>
-        document.getElementById('y').textContent = new Date().getFullYear();
+        const yearEl = document.getElementById('y');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
     </script>
+
 
     <!-- JS unificato con gestione menu + a11y + smooth-scroll -->
     <script src="assets/js/app.js" defer></script>
