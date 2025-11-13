@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://www.esempio-zenith.it/seo/sitemap.xml

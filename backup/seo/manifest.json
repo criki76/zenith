@@ -1,9 +1,0 @@
-{
-  "name": "ASD Zenith",
-  "short_name": "Zenith",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#f5f7f6",
-  "theme_color": "#0e2a26",
-  "icons": []
-}

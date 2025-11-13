@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <g fill="none" stroke="#000" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M400,150 C560,150 650,260 650,380 C650,505 555,575 460,575 C365,575 300,515 300,450 C300,392 343,360 380,360 C420,360 448,386 448,418 C448,446 427,466 402,466" />
-    <path d="M248,520 C220,482 205,438 205,392" />
-  </g>
-</svg>
