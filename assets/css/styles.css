@@ -6,7 +6,7 @@
         /* ===============
    0) DESIGN TOKENS
    =============== */
-        
+
          :root {
             /* Colori base */
             --bg: #f5f7f6;
@@ -26,17 +26,17 @@
         /* ==================
    1) RESET & BASE
    ================== */
-        
+
         * {
             box-sizing: border-box;
         }
-        
+
         html,
         body {
             margin: 0;
             padding: 0;
         }
-        
+
         body {
             font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
             background: var(--bg);
@@ -46,33 +46,33 @@
             -moz-osx-font-smoothing: grayscale;
         }
         /* Link: colore neutro + transizione per interazioni */
-        
+
         a {
             color: #0b4e48;
             /* colore link fuori da hero */
             text-decoration: none;
             transition: color .25s ease, opacity .25s ease, letter-spacing .25s ease;
         }
-        
+
         a:hover,
         a:focus-visible {
             text-decoration: underline;
             /* sottolineo in hover/focus per accessibilità */
         }
-        
+
         a:focus {
             outline: none;
         }
         /* rimosso focus di default */
         /* Focus visibile coerente su link e bottoni (a11y) */
-        
+
         a:focus-visible,
         .btn:focus-visible {
             outline: 2px solid var(--brand-200);
             outline-offset: 2px;
         }
         /* Immagini fluide con raggio coerente */
-        
+
         img {
             max-width: 100%;
             height: auto;
@@ -80,7 +80,7 @@
             border-radius: var(--radius);
         }
         /* Contenitore principale */
-        
+
         .container {
             width: min(1100px, 92%);
             margin-left: auto;
@@ -90,12 +90,12 @@
    2) ACCESSIBILITÀ
    =================== */
         /* Link "salta al contenuto" per screen reader e tastiera */
-        
+
         .skip-link {
             position: absolute;
             left: -9999px;
         }
-        
+
         .skip-link:focus {
             position: static;
             padding: .6rem 1rem;
@@ -107,7 +107,7 @@
    3) COMPONENTI DI BASE
    ========================= */
         /* Bottoni base */
-        
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -121,33 +121,77 @@
             transition: transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
         }
         /* Varianti bottoni */
-        
+
         .btn-primary {
             background: var(--brand);
             color: #fff;
             box-shadow: 0 10px 28px rgba(31, 111, 102, .28);
         }
-        
+
         .btn-primary:hover,
         .btn-primary:focus-visible {
             background: var(--brand-600);
             transform: translateY(-2px);
         }
-        
+
         .btn-secondary {
             background: #e7efed;
             color: var(--text);
         }
-        
+
         .btn-secondary:hover,
         .btn-secondary:focus-visible {
             background: #dbe8e6;
             transform: translateY(-2px);
         }
+
+        .btn-whatsapp {
+            gap: 0.4rem;
+        }
+
+        .btn-whatsapp .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-whatsapp svg {
+            width: 18px;
+            height: 18px;
+            display: block;
+        }
+
+        .btn-whatsapp svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+            /* forza bianco sempre */
+        }
+
+        .btn-call {
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--text);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-call:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .btn-call svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--text);
+        }
+
+        .btn-call svg {
+            vertical-align: middle;
+        }
         /* ==================================
    4) HEADER & NAVIGAZIONE PRINCIPALE
    ================================== */
-        
+
         .site-header {
             position: sticky;
             top: 0;
@@ -157,11 +201,11 @@
             z-index: 100;
             /* header sempre sopra a overlay/menu */
         }
-        
+
         .site-header.is-stuck {
             box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
         }
-        
+
         .header-inner {
             display: flex;
             align-items: center;
@@ -169,7 +213,7 @@
             padding: .8rem 0;
         }
         /* Branding / logo */
-        
+
         .logo {
             display: flex;
             align-items: center;
@@ -177,7 +221,7 @@
             font-weight: 700;
             font-size: 1.05rem;
         }
-        
+
         .logo img {
             /* dimensione unica per coerenza */
             height: 76px;
@@ -185,7 +229,7 @@
             display: block;
         }
         /* Marchio compatto (se usato) */
-        
+
         .brand {
             display: inline-flex;
             align-items: center;
@@ -195,7 +239,7 @@
             font-weight: 700;
             letter-spacing: .3px;
         }
-        
+
         .brand-mark {
             display: grid;
             place-items: center;
@@ -207,7 +251,7 @@
             box-shadow: var(--shadow);
         }
         /* Hamburger per mobile */
-        
+
         .mobile-menu-btn {
             display: none;
             width: 40px;
@@ -216,7 +260,7 @@
             border: 0;
             padding: 0;
         }
-        
+
         .mobile-menu-btn .bar {
             display: block;
             width: 24px;
@@ -226,12 +270,12 @@
             border-radius: 999px;
         }
         /* Nav principale */
-        
+
         .nav {
             display: flex;
             align-items: center;
         }
-        
+
         .nav a {
             position: relative;
             display: inline-block;
@@ -240,7 +284,7 @@
             color: var(--text);
         }
         /* Effetto underline animato in header */
-        
+
         .site-header .nav a::after {
             content: "";
             position: absolute;
@@ -254,38 +298,38 @@
             transition: transform .35s ease;
             border-radius: 2px;
         }
-        
+
         .site-header .nav a:hover,
         .site-header .nav a:focus-visible {
             letter-spacing: .2px;
             opacity: .92;
         }
-        
+
         .site-header .nav a:hover::after,
         .site-header .nav a:focus-visible::after {
             transform: scaleX(1);
         }
         /* Stato attivo */
-        
+
         .site-header .nav a.is-active,
         .site-header .nav a[aria-current="page"] {
             opacity: 1;
             letter-spacing: .2px;
         }
-        
+
         .site-header .nav a.is-active::after,
         .site-header .nav a[aria-current="page"]::after {
             transform: scaleX(1);
         }
         /* CTA premium nella nav */
-        
+
         .site-header .nav .btn.btn-primary {
             padding: .55rem 1rem;
             border-radius: 999px;
             box-shadow: 0 10px 28px rgba(31, 111, 102, .22);
             transition: transform .18s ease, box-shadow .25s ease, background .25s ease;
         }
-        
+
         .site-header .nav .btn.btn-primary:hover,
         .site-header .nav .btn.btn-primary:focus-visible {
             transform: translateY(-2px);
@@ -294,13 +338,13 @@
         /* ======================
    5) HERO / COPERTINA
    ====================== */
-        
+
         .hero-cover {
             position: relative;
             padding: 5rem 0 4rem;
         }
         /* Background immagine hero */
-        
+
         .hero-cover .hero-bg {
             position: absolute;
             inset: 0;
@@ -311,7 +355,7 @@
             filter: saturate(105%) contrast(1.08) brightness(0.82);
         }
         /* Overlay (non intercetta click) */
-        
+
         .hero-cover::after {
             content: "";
             position: absolute;
@@ -322,7 +366,7 @@
             /* background: linear-gradient(180deg, rgba(12, 28, 25, 0.62) 0%, rgba(12, 28, 25, 0.48) 35%, rgba(12, 28, 25, 0.40) 100%); */
         }
         /* Spirale animata */
-        
+
         .hero-spiral {
             position: absolute;
             top: 53%;
@@ -337,12 +381,12 @@
             z-index: 2;
             animation: breathing 12.6s ease-in-out infinite;
         }
-        
+
         .hero-spiral.c3 {
             filter: opacity(.92) drop-shadow(0 1px 0 rgba(0, 0, 0, .04));
         }
         /* Contenuto hero */
-        
+
         .hero-inner {
             position: relative;
             z-index: 3;
@@ -351,34 +395,34 @@
             gap: 2rem;
             align-items: center;
         }
-        
+
         .hero-copy {
             color: #fff;
             text-shadow: 0 2px 14px rgba(0, 0, 0, .38);
         }
-        
+
         .hero-copy h1 {
             font-weight: 800;
             letter-spacing: -0.5px;
         }
-        
+
         .hero-copy .subtitle {
             color: rgba(255, 255, 255, 0.94);
         }
         /* Testi in hero */
-        
+
         .subtitle {
             color: rgba(255, 255, 255, .92);
             margin: .4rem 0 1rem;
             max-width: 56ch;
         }
-        
+
         .payoff {
             background: rgba(255, 255, 255, 0.22);
             border: 1px solid rgba(255, 255, 255, 0.32);
             backdrop-filter: blur(3px);
         }
-        
+
         .micro-claim {
             margin-top: .8rem;
             margin-bottom: 1.2rem;
@@ -388,31 +432,31 @@
             text-shadow: 0 2px 12px rgba(0, 0, 0, .35);
         }
         /* Bottoni in hero */
-        
+
         .hero .btn-primary {
             background: var(--brand);
             color: #fff;
             box-shadow: 0 10px 28px rgba(0, 0, 0, .35);
         }
-        
+
         .hero .btn-primary:hover,
         .hero .btn-primary:focus-visible {
             background: var(--brand-600);
             transform: translateY(-2px);
         }
-        
+
         .hero .btn-secondary {
             background: rgba(255, 255, 255, .14);
             color: #fff;
             border: 1px solid rgba(255, 255, 255, .25);
         }
-        
+
         .hero .btn-secondary:hover,
         .hero .btn-secondary:focus-visible {
             background: rgba(255, 255, 255, .22);
         }
         /* Respiro */
-        
+
         @keyframes breathing {
             0% {
                 transform: translate(-50%, -50%) scale(0.96);
@@ -430,20 +474,20 @@
         /* =======================
    6) SEZIONI GENERICHE
    ======================= */
-        
+
         .section {
             padding: 1rem 0;
         }
-        
+
         .section.alt {
             background: #f1f5f4;
         }
-        
+
         .section h2 {
             font-size: clamp(1.4rem, 2.6vw, 2rem);
             margin: 0 0 .6rem;
         }
-        
+
         .section-intro {
             color: var(--muted);
             margin-bottom: 1.4rem;
@@ -452,13 +496,13 @@
    7) COMPONENTI SPECIFICI
    ========================== */
         /* Cards generiche */
-        
+
         .cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
         }
-        
+
         .card {
             background: var(--card);
             border: 1px solid var(--line);
@@ -467,7 +511,7 @@
             box-shadow: var(--shadow);
         }
         /* Gallery layout Zenith */
-        
+
         .gallery.layout-zenith {
             display: grid;
             grid-template-columns: 1.4fr 1fr;
@@ -476,11 +520,11 @@
             align-items: center;
             margin-top: 1.6rem;
         }
-        
+
         li a .gallery.layout-zenith figure {
             margin: 0;
         }
-        
+
         .gallery.layout-zenith img {
             width: 100%;
             height: auto;
@@ -489,22 +533,22 @@
             object-fit: cover;
             box-shadow: var(--shadow);
         }
-        
+
         .gallery.layout-zenith .g-large {
             grid-row: span 2;
         }
         /* Sezione Filosofia */
-        
+
         #filosofia .container {
             max-width: 1100px;
         }
-        
+
         #filosofia .why-copy h2 {
             font-weight: 800;
             letter-spacing: -0.4px;
             margin: 0 0 .8rem;
         }
-        
+
         #filosofia .why-copy p {
             max-width: 68ch;
             line-height: 1.75;
@@ -512,11 +556,11 @@
             color: rgba(13, 15, 14, .86);
             margin: .9rem 0 0;
         }
-        
+
         #filosofia .why-copy p strong {
             color: var(--text);
         }
-        
+
         #filosofia .spiral-claim {
             margin-top: 1.2rem;
             padding: .9rem 1.1rem;
@@ -525,14 +569,14 @@
             border-radius: 12px;
             color: rgba(13, 15, 14, .90);
         }
-        
+
         #filosofia .why-facts {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: .9rem;
             margin-top: 1.2rem;
         }
-        
+
         #filosofia .fact {
             background: var(--card);
             border: 1px solid var(--line);
@@ -541,41 +585,41 @@
             box-shadow: var(--shadow);
             text-align: center;
         }
-        
+
         #filosofia .fact strong {
             display: block;
             font-weight: 700;
             letter-spacing: .1px;
         }
-        
+
         #filosofia .fact span {
             display: block;
             color: var(--muted);
             margin-top: .15rem;
         }
         /* Layout base: mobile (tutto in colonna) */
-        
+
         .why-grid {
             display: flex;
             flex-direction: column;
             gap: 2rem;
         }
-        
+
         .why-copy p {
             margin-bottom: 0.75rem;
             line-height: 1.7;
         }
-        
+
         .spiral-claim {
             margin-top: 0.5rem;
         }
-        
+
         .why-facts {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
-        
+
         .fact {
             background-color: #ffffff;
             border-radius: 999px;
@@ -588,18 +632,18 @@
             flex-direction: column;
             justify-content: center;
         }
-        
+
         .fact strong {
             display: block;
             margin-bottom: 0.1rem;
         }
-        
+
         .fact span {
             font-size: 0.85rem;
             opacity: 0.8;
         }
         /* Desktop: due colonne affiancate */
-        
+
         @media (min-width: 900px) {
             .why-grid {
                 display: grid;
@@ -615,14 +659,14 @@
                 gap: 1rem;
             }
         }
-        
+
         .title-istruttrici {
             text-align: center;
             font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 10px;
         }
-        
+
         .subtitle-istruttrici {
             text-align: center;
             color: #666;
@@ -631,17 +675,17 @@
             margin: 0 auto 40px;
             /* centra frase */
         }
-        
+
         .istruttrici-section {
             padding: 60px 0;
             /* RIMOSSO display:flex */
         }
-        
+
         .istruttrici-inner {
             max-width: 1100px;
             margin: 0 auto;
         }
-        
+
         .istruttrici-wrapper {
             display: flex;
             flex-direction: column;
@@ -649,7 +693,7 @@
             width: 100%;
         }
         /* Desktop: affiancate */
-        
+
         @media (min-width: 768px) {
             .istruttrici-wrapper {
                 flex-direction: row;
@@ -660,7 +704,7 @@
                 width: 48%;
             }
         }
-        
+
         .istruttrice-card {
             background: #fff;
             padding: 35px;
@@ -668,7 +712,7 @@
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
             text-align: center;
         }
-        
+
         .istruttrice-img {
             width: 100%;
             height: 260px;
@@ -676,24 +720,24 @@
             border-radius: 12px;
             margin-bottom: 20px;
         }
-        
+
         .istruttrice-name {
             font-size: 1.7rem;
             font-weight: 700;
             margin-bottom: 15px;
         }
-        
+
         .istruttrice-bio {
             color: #444;
             line-height: 1.7;
             font-size: 1rem;
         }
         /* Tabelle */
-        
+
         .table-wrap {
             overflow-x: auto;
         }
-        
+
         .table {
             width: 100%;
             border-collapse: collapse;
@@ -703,23 +747,23 @@
             overflow: hidden;
             box-shadow: var(--shadow);
         }
-        
+
         .table th,
         .table td {
             padding: .9rem 1rem;
             border-bottom: 1px solid var(--line);
             text-align: left;
         }
-        
+
         .table thead th {
             background: #f6faf9;
         }
-        
+
         .orari-section {
             padding-top: 4rem;
             padding-bottom: 4rem;
         }
-        
+
         .container-orari {
             max-width: 1000px;
             margin-left: auto;
@@ -727,33 +771,33 @@
             padding-left: 1.5rem;
             padding-right: 1.5rem;
         }
-        
+
         .orari-title {
             font-size: 2rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 0.5rem;
         }
-        
+
         .orari-subtitle {
             text-align: center;
             font-size: 1rem;
             opacity: 0.8;
             margin-bottom: 2rem;
         }
-        
+
         .orari-table-wrapper {
             width: 100%;
             overflow-x: auto;
         }
-        
+
         .orari-table {
             width: 100%;
             border-collapse: collapse;
             min-width: 720px;
             background-color: #ffffff;
         }
-        
+
         .orari-table th,
         .orari-table td {
             border: 1px solid #e3e3e3;
@@ -764,24 +808,24 @@
             text-align: center;
             font-size: 0.9rem;
         }
-        
+
         .orari-table thead th {
             background-color: #f5f5f5;
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.8rem;
         }
-        
+
         .orari-table tbody tr:nth-child(even) {
             background-color: #fafafa;
         }
-        
+
         .orari-table td:first-child,
         .orari-table th:first-child {
             font-weight: 600;
             white-space: nowrap;
         }
-        
+
         .orari-note {
             margin-top: 1rem;
             font-size: 0.85rem;
@@ -789,7 +833,7 @@
             opacity: 0.8;
         }
         /* Mobile: titolo un po' più piccolo */
-        
+
         @media (max-width: 600px) {
             .orari-title {
                 font-size: 1.6rem;
@@ -800,16 +844,18 @@
         }
         /* FAQ */
         /* --- NASCONDI/MOSTRA --- */
-        
+
         .orari-mobile {
             display: block;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
         }
-        
+
         .orari-desktop {
             display: none;
         }
         /* Da 900px in su → Desktop */
-        
+
         @media (min-width: 900px) {
             .orari-mobile {
                 display: none;
@@ -819,29 +865,29 @@
             }
         }
         /* --- CARD STYLE --- */
-        
+
         .cards-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
+
         .day-card {
             background-color: #ffffff;
             border-radius: 1.5rem;
             padding: 1.3rem;
             box-shadow: 0 14px 30px rgba(0, 0, 0, 0.06);
         }
-        
+
         .day-header {
             margin-bottom: 0.5rem;
         }
-        
+
         .day-name {
             font-size: 1.1rem;
             font-weight: 700;
         }
-        
+
         .slot-list {
             list-style: none;
             margin: 0;
@@ -850,38 +896,38 @@
             flex-direction: column;
             gap: 0.4rem;
         }
-        
+
         .slot {
             display: flex;
             gap: 0.8rem;
             font-size: 0.9rem;
         }
-        
+
         .slot-time {
             font-weight: 600;
             min-width: 3.4rem;
         }
         /* --- TABELLA DESKTOP --- */
-        
+
         .orari-table {
             width: 100%;
             border-collapse: collapse;
         }
-        
+
         .orari-table th,
         .orari-table td {
             border: 1px solid #e3e3e3;
             padding: 0.7rem;
             text-align: center;
         }
-        
+
         .orari-table thead th {
             background-color: #f5f5f5;
             font-weight: 700;
             text-transform: uppercase;
             font-size: 0.8rem;
         }
-        
+
         .orari-desktop .container {
             max-width: 1100px;
             margin-left: auto;
@@ -889,35 +935,35 @@
             padding-left: 1.5rem;
             padding-right: 1.5rem;
         }
-        
+
         #faq details {
             border-bottom: 1px solid rgba(0, 0, 0, .08);
             padding: .8rem 0;
         }
-        
+
         #faq summary {
             cursor: pointer;
             font-weight: 600;
             color: rgba(20, 20, 20, .85);
             transition: color .25s ease;
         }
-        
+
         #faq summary:hover {
             color: var(--brand-200);
         }
-        
+
         #faq p {
             margin: .5rem 0 0;
             color: rgba(20, 20, 20, .70);
             line-height: 1.6;
         }
         /* CTA generica (blocchi promozionali) */
-        
+
         .section.cta {
             background: linear-gradient(180deg, #f2f8f7, #e9f2f0);
             text-align: center;
         }
-        
+
         .cta-inner .btn {
             margin: 0 .4rem;
         }
@@ -925,13 +971,13 @@
    8) PAGINE SPECIFICHE
    ============================ */
         /* Pagina — Associazione */
-        
+
         .page-associazione .breadcrumb {
             background: #f6f7f8;
             padding: .6rem 0;
             font-size: .9rem;
         }
-        
+
         .page-associazione .breadcrumb a {
             color: inherit;
             text-decoration: none;
@@ -939,60 +985,60 @@
             padding-bottom: 2px;
             transition: .25s ease;
         }
-        
+
         .page-associazione .breadcrumb a:hover,
         .page-associazione .breadcrumb a:focus-visible {
             border-bottom-color: rgba(0, 0, 0, .35);
         }
-        
+
         .associazione .lead {
             max-width: 70ch;
             font-size: 1.08rem;
             line-height: 1.78;
             color: rgba(13, 15, 14, .86);
         }
-        
+
         .associazione .info-grid {
             margin-top: 1.2rem;
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1rem;
         }
-        
+
         .associazione .card h2 {
             margin: 0 0 .4rem;
             font-size: 1.15rem;
         }
-        
+
         .associazione .clean {
             list-style: none;
             padding-left: 0;
             margin: .2rem 0 .4rem;
         }
-        
+
         .associazione .clean li {
             margin: .15rem 0;
         }
-        
+
         .associazione .micro {
             font-size: .9rem;
             color: var(--muted);
         }
-        
+
         .associazione .docs {
             margin-top: 1.2rem;
         }
-        
+
         .associazione .docs-list {
             list-style: none;
             padding-left: 0;
             margin: .4rem 0 .2rem;
         }
-        
+
         .associazione .docs-list li {
             margin: .25rem 0;
         }
-        
+
         .associazione .docs-list a {
             text-decoration: none;
             border-bottom: 1px solid rgba(0, 0, 0, .15);
@@ -1000,35 +1046,35 @@
             transition: .25s ease;
             color: inherit;
         }
-        
+
         .associazione .docs-list a:hover,
         .associazione .docs-list a:focus-visible {
             border-bottom-color: rgba(0, 0, 0, .35);
             opacity: .88;
         }
-        
+
         .associazione .cta-row {
             display: flex;
             gap: .6rem;
             flex-wrap: wrap;
             margin-top: 1rem;
         }
-        
+
         .associazione .legal {
             margin-top: 1.4rem;
         }
-        
+
         .associazione .legal .small {
             font-size: .86rem;
             opacity: .8;
         }
-        
+
         .associazione .legal .tiny {
             margin-top: .4rem;
             font-size: .78rem;
             color: rgba(20, 20, 20, .55);
         }
-        
+
         .soft {
             border: 0;
             height: 1px;
@@ -1046,7 +1092,7 @@
         /* =====================================================
    FOOTER ZENITH — VERSIONE FINALE, ELEGANTE E COERENTE
 ===================================================== */
-        
+
         .site-footer {
             background: #f4f7f6;
             color: #000;
@@ -1060,11 +1106,11 @@
             box-shadow: var(--shadow);
         }
         /* ---- Contenuto ---- */
-        
+
         .footer-content {
             padding: 32px 40px 26px;
         }
-        
+
         .footer-top {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1072,7 +1118,7 @@
             margin-bottom: 20px;
         }
         /* ---- Titoli ---- */
-        
+
         .footer-section h3 {
             font-size: 16px;
             margin-bottom: 12px;
@@ -1082,7 +1128,7 @@
             color: #0d0f0e;
         }
         /* ---- Testi ---- */
-        
+
         .footer-section p {
             font-size: 15px;
             line-height: 1.55;
@@ -1090,7 +1136,7 @@
             color: rgba(0, 0, 0, 0.84);
         }
         /* ---- Contatti ---- */
-        
+
         .contact-item {
             display: flex;
             align-items: flex-start;
@@ -1098,7 +1144,7 @@
             margin-bottom: 12px;
             font-size: 15px;
         }
-        
+
         .contact-item svg {
             width: 18px;
             height: 18px;
@@ -1106,13 +1152,13 @@
             fill: #000;
         }
         /* ---- Social ---- */
-        
+
         .social-links {
             display: flex;
             gap: 14px;
             margin-top: 16px;
         }
-        
+
         .social-links a {
             width: 38px;
             height: 38px;
@@ -1123,19 +1169,19 @@
             justify-content: center;
             transition: background .25s ease, transform .25s ease;
         }
-        
+
         .social-links a:hover {
             background: rgba(0, 0, 0, 0.12);
             transform: translateY(-2px);
         }
-        
+
         .social-links svg {
             width: 20px;
             height: 20px;
             fill: #000;
         }
         /* ---- Legal ---- */
-        
+
         .legal-info {
             padding: 20px 40px 16px;
             background: rgba(0, 0, 0, 0.04);
@@ -1144,22 +1190,22 @@
             color: rgba(0, 0, 0, 0.75);
             border-top: 1px solid rgba(0, 0, 0, 0.07);
         }
-        
+
         .legal-info p {
             margin: 3px 0;
         }
-        
+
         .legal-info a {
             color: #000;
             border-bottom: 1px solid rgba(0, 0, 0, 0.35);
             transition: border-color .25s ease;
         }
-        
+
         .legal-info a:hover {
             border-bottom-color: #000;
         }
         /* ---- Copyright ---- */
-        
+
         .footer-bottom {
             padding: 14px 40px 20px;
             font-size: 12px;
@@ -1168,7 +1214,7 @@
             border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
         /* ---- Mobile ---- */
-        
+
         @media (max-width: 768px) {
             .site-footer {
                 margin: 2.2rem 1rem;
@@ -1188,7 +1234,7 @@
         /* ================================
    10) RESPONSIVE (MEDIA QUERIES)
    ================================ */
-        
+
         @media (max-width: 880px) {
             /* Mobile: hamburger visibile */
             .mobile-menu-btn {
@@ -1255,7 +1301,7 @@
    11) PREFERENZE UTENTE & ACCESSIBILITÀ EXTRA
    ========================================== */
         /* Riduzione movimento (rispetto utenti sensibili) */
-        
+
         @media (prefers-reduced-motion: reduce) {
             .hero-spiral {
                 animation: none;
@@ -1263,7 +1309,7 @@
             }
         }
         /* Dark mode soft (facoltativa ma utile) */
-        
+
         @media (prefers-color-scheme: dark) {
              :root {
                 --bg: #0f1312;
