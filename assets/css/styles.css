@@ -1552,23 +1552,39 @@
   color: #fff;
 }
 
-/* ── Tablet ── */
-@media (max-width: 900px) {
-  .recensioni-page {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .recensioni-page .review-card:last-child {
+/* Desktop wrapper: visibile sopra 560px */
+.recensioni-desktop {
+  display: block;
+}
+.recensioni-mobile {
+  display: none;
+}
+
+/* Mobile wrapper: visibile sotto 560px */
+@media (max-width: 560px) {
+  .recensioni-desktop {
     display: none;
+  }
+  .recensioni-mobile {
+    display: block;
   }
 }
 
-/* ── Mobile ── */
+/* Pagina mobile: 1 card full width */
+.recensioni-page-m {
+  width: 100%;
+}
+.recensioni-page-m[aria-hidden="true"] {
+  display: none;
+}
+.recensioni-page-m.is-entering {
+  animation: recFadeIn .32s ease forwards;
+}
+
+/* Mobile: card full width senza grid */
 @media (max-width: 560px) {
-  .recensioni-page {
-    grid-template-columns: 1fr;
-  }
-  .recensioni-page .review-card:not(:first-child) {
-    display: none;
+  .recensioni-page-m .review-card {
+    width: 100%;
   }
 }
 

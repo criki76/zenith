@@ -192,45 +192,107 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ── Slider recensioni ── */
-    const pages   = document.querySelectorAll('.recensioni-page');
-    const dots    = document.querySelectorAll('.rec-dot');
-    const btnPrev = document.querySelector('.rec-btn--prev');
-    const btnNext = document.querySelector('.rec-btn--next');
+    (function () {
+        const dotsContainer = document.querySelector('.rec-dots');
+        const btnPrev = document.querySelector('.rec-btn--prev');
+        const btnNext = document.querySelector('.rec-btn--next');
 
-    if (pages.length && btnPrev && btnNext) {
+        if (!dotsContainer || !btnPrev || !btnNext) return;
+
+        function isMobile() {
+            return window.innerWidth <= 560;
+        }
+
+        function buildDots(count) {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < count; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'rec-dot' + (i === 0 ? ' rec-dot--active' : '');
+                btn.setAttribute('role', 'tab');
+                btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+                btn.setAttribute('aria-label', 'Pagina ' + (i + 1));
+                btn.dataset.page = i;
+                btn.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(btn);
+            }
+        }
+
         let current = 0;
+        let pages = [];
+
+        function getPages() {
+            if (isMobile()) {
+                return Array.from(document.querySelectorAll('.recensioni-page-m'));
+            } else {
+                return Array.from(document.querySelectorAll('.recensioni-desktop .recensioni-page'));
+            }
+        }
+
+        function getDots() {
+            return Array.from(dotsContainer.querySelectorAll('.rec-dot'));
+        }
 
         function goTo(index) {
+            pages = getPages();
+            const dots = getDots();
+
             pages[current].setAttribute('aria-hidden', 'true');
             pages[current].classList.remove('is-entering');
-            dots[current].classList.remove('rec-dot--active');
-            dots[current].setAttribute('aria-selected', 'false');
+            if (dots[current]) {
+                dots[current].classList.remove('rec-dot--active');
+                dots[current].setAttribute('aria-selected', 'false');
+            }
 
             current = index;
 
             pages[current].removeAttribute('aria-hidden');
             void pages[current].offsetWidth;
             pages[current].classList.add('is-entering');
-            dots[current].classList.add('rec-dot--active');
-            dots[current].setAttribute('aria-selected', 'true');
+            if (dots[current]) {
+                dots[current].classList.add('rec-dot--active');
+                dots[current].setAttribute('aria-selected', 'true');
+            }
 
             btnPrev.disabled = current === 0;
             btnNext.disabled = current === pages.length - 1;
         }
+
+        function init() {
+            current = 0;
+            pages = getPages();
+            buildDots(pages.length);
+
+            pages.forEach((p, i) => {
+                if (i === 0) {
+                    p.removeAttribute('aria-hidden');
+                } else {
+                    p.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            btnPrev.disabled = true;
+            btnNext.disabled = pages.length <= 1;
+        }
+
+        init();
+
+        let lastMobile = isMobile();
+        window.addEventListener('resize', () => {
+            const nowMobile = isMobile();
+            if (nowMobile !== lastMobile) {
+                lastMobile = nowMobile;
+                init();
+            }
+        });
 
         btnPrev.addEventListener('click', () => {
             if (current > 0) goTo(current - 1);
         });
 
         btnNext.addEventListener('click', () => {
-            if (current < pages.length - 1) goTo(current + 1);
+            if (current < getPages().length - 1) goTo(current + 1);
         });
 
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => goTo(i));
-        });
-
-        /* Swipe touch mobile */
         let touchStartX = 0;
         const slider = document.querySelector('.recensioni-slider');
         if (slider) {
@@ -241,9 +303,10 @@ document.addEventListener('DOMContentLoaded', () => {
             slider.addEventListener('touchend', e => {
                 const delta = e.changedTouches[0].clientX - touchStartX;
                 if (Math.abs(delta) < 40) return;
-                if (delta < 0 && current < pages.length - 1) goTo(current + 1);
+                const total = getPages().length;
+                if (delta < 0 && current < total - 1) goTo(current + 1);
                 if (delta > 0 && current > 0) goTo(current - 1);
             }, { passive: true });
         }
-    }
+    })();
 });
