@@ -71,6 +71,7 @@ Dark mode supportata via `@media (prefers-color-scheme: dark)`.
 | `#team` | Istruttrici | 2 card istruttrice (Samantha, Chiara) con foto e bio |
 | `#orari` | Orari | Dual mode: mobile cards + desktop table; Lu–Sa |
 | `#faq` | FAQ | 6 domande con `<details>/<summary>` nativo |
+| `#recensioni` | Recensioni | Slider 2 modalità: desktop 3 card/2 pagine, mobile 1 card/6 pagine. Swipe touch. Dot dinamici via JS. 6 recensioni Google reali con nome e corso frequentato. |
 | `#cta` | Call-to-action | Testo motivazionale + 2 CTA (WhatsApp, tel) |
 | `#contatti` (footer) | Footer | 3 colonne: brand info, contatti (tel/WA/email/indirizzo), info utili + dati legali |
 
@@ -186,3 +187,4 @@ Pagina legale con `noindex`. 10 sottosezioni (Chi siamo, Dati raccolti, Finalit�
 - **Skip-link accessibilità:** presente nell'index — `<a class="skip-link" href="#main">`.
 - **Anno footer:** generato dinamicamente da JS inline (`document.getElementById('y').textContent = new Date().getFullYear()`).
 - **Codice Fiscale:** `04821690403` (presente in privacy policy). Affiliazione: OPES Italia.
+- **Slider recensioni:** doppio DOM (`.recensioni-desktop` / `.recensioni-mobile`), JS reinizializza al resize con IIFE. Swipe touch con `touchstart`/`touchend` passive.
