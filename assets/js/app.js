@@ -190,4 +190,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sectionTargets.forEach(sec => obs.observe(sec));
     }
+
+    /* ── Slider recensioni ── */
+    const pages   = document.querySelectorAll('.recensioni-page');
+    const dots    = document.querySelectorAll('.rec-dot');
+    const btnPrev = document.querySelector('.rec-btn--prev');
+    const btnNext = document.querySelector('.rec-btn--next');
+
+    if (pages.length && btnPrev && btnNext) {
+        let current = 0;
+
+        function goTo(index) {
+            pages[current].setAttribute('aria-hidden', 'true');
+            pages[current].classList.remove('is-entering');
+            dots[current].classList.remove('rec-dot--active');
+            dots[current].setAttribute('aria-selected', 'false');
+
+            current = index;
+
+            pages[current].removeAttribute('aria-hidden');
+            void pages[current].offsetWidth;
+            pages[current].classList.add('is-entering');
+            dots[current].classList.add('rec-dot--active');
+            dots[current].setAttribute('aria-selected', 'true');
+
+            btnPrev.disabled = current === 0;
+            btnNext.disabled = current === pages.length - 1;
+        }
+
+        btnPrev.addEventListener('click', () => {
+            if (current > 0) goTo(current - 1);
+        });
+
+        btnNext.addEventListener('click', () => {
+            if (current < pages.length - 1) goTo(current + 1);
+        });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => goTo(i));
+        });
+
+        /* Swipe touch mobile */
+        let touchStartX = 0;
+        const slider = document.querySelector('.recensioni-slider');
+        if (slider) {
+            slider.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].clientX;
+            }, { passive: true });
+
+            slider.addEventListener('touchend', e => {
+                const delta = e.changedTouches[0].clientX - touchStartX;
+                if (Math.abs(delta) < 40) return;
+                if (delta < 0 && current < pages.length - 1) goTo(current + 1);
+                if (delta > 0 && current > 0) goTo(current - 1);
+            }, { passive: true });
+        }
+    }
 });

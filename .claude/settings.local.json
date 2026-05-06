@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-Content \"c:\\\\xampp\\\\htdocs\\\\Zenith\\\\assets\\\\css\\\\styles.css\")",
+      "Bash(Measure-Object -Line)",
+      "PowerShell(\\(Get-Content \"c:\\\\xampp\\\\htdocs\\\\Zenith\\\\assets\\\\css\\\\styles.css\"\\).Count)"
+    ]
+  }
+}

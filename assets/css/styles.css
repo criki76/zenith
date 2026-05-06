@@ -1331,3 +1331,256 @@
                 background: #111614;
             }
         }
+
+/* ==============================================
+   SECTION: RECENSIONI
+   ============================================== */
+
+/* ── Sezione ── */
+#recensioni {
+  padding: 5rem 0;
+  background-color: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+#recensioni::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -180px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--brand-200) 0%, transparent 70%);
+  opacity: .07;
+  pointer-events: none;
+  z-index: 0;
+}
+#recensioni .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Badge Google ── */
+.recensioni-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: .5rem 1.1rem;
+  margin-top: 1rem;
+}
+.badge-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.badge-score {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.badge-source {
+  font-size: .85rem;
+  color: var(--muted);
+}
+/* ── Slider ── */
+.recensioni-slider {
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Pagina (3 card affiancate) ── */
+.recensioni-page {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+  transition: opacity .3s ease, transform .3s ease;
+}
+.recensioni-page[aria-hidden="true"] {
+  display: none;
+}
+.recensioni-page.is-entering {
+  animation: recFadeIn .32s ease forwards;
+}
+@keyframes recFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Card ── */
+.review-card {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+.review-card:hover {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, .12);
+  transform: translateY(-4px);
+}
+
+/* ── Stelle ── */
+.review-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.review-stars svg {
+  fill: #f5a623;
+  flex-shrink: 0;
+}
+
+/* ── Testo ── */
+.review-text {
+  font-size: 1rem;
+  line-height: 1.72;
+  color: var(--text);
+  margin: 0;
+  flex: 1;
+}
+
+/* ── Footer card ── */
+.review-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding-top: .9rem;
+  border-top: 1px solid var(--line);
+}
+.review-name {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.review-course {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--brand);
+  background-color: var(--brand-200);
+  border-radius: 999px;
+  padding: .15rem .65rem;
+  line-height: 1.6;
+}
+/* ── Navigazione ── */
+.recensioni-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+.rec-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.rec-btn:hover:not(:disabled) {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+.rec-btn:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
+.rec-dots {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.rec-dot {
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--line);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color .2s ease, transform .2s ease;
+}
+.rec-dot--active {
+  background-color: var(--brand);
+  transform: scale(1.3);
+}
+
+/* ── CTA ── */
+.recensioni-cta {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+.btn-ghost {
+  display: inline-block;
+  padding: .8rem 2rem;
+  border: 2.5px solid var(--brand);
+  border-radius: 999px;
+  color: var(--brand);
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-decoration: none;
+  transition: background-color .2s ease, color .2s ease;
+}
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  background-color: var(--brand);
+  color: #fff;
+}
+
+/* ── Tablet ── */
+@media (max-width: 900px) {
+  .recensioni-page {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .recensioni-page .review-card:last-child {
+    display: none;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 560px) {
+  .recensioni-page {
+    grid-template-columns: 1fr;
+  }
+  .recensioni-page .review-card:not(:first-child) {
+    display: none;
+  }
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  .review-card {
+    border-color: rgba(255, 255, 255, .07);
+  }
+  .recensioni-badge {
+    border-color: rgba(255, 255, 255, .1);
+  }
+  .review-course {
+    background-color: rgba(163, 200, 195, .15);
+  }
+}
