@@ -2,7 +2,7 @@
 
 ## Panoramica
 - **Nome cliente:** ASD Zenith (Associazione Sportiva Dilettantistica)
-- **Tipo sito:** Sito statico istituzionale — centro Pilates, Yoga e Functional Lady
+- **Tipo sito:** Sito statico istituzionale — centro Pilates, Ginnastica posturale e Functional Ladies
 - **URL produzione:** https://www.zenithasd.it/
 - **Deploy:** non rilevato (no vercel.json, no .htaccess, no Netlify config)
 - **Dominio:** zenithasd.it — riferimenti hardcoded nel codice (canonical, OG, sitemap, robots)
@@ -66,9 +66,9 @@ Dark mode supportata via `@media (prefers-color-scheme: dark)`.
 | ID / classe | Sezione | Contenuto |
 |-------------|---------|-----------|
 | `.hero.hero-cover` | Hero | H1, sottotitolo, CTA WhatsApp + tel, sfondo studio-1.webp, spirale animata |
-| `#corsi` | Corsi | 3 card (Pilates, Yoga, Functional Lady) + gallery 4 foto studio |
+| `#corsi` | Corsi | 3 card (Pilates, Ginnastica posturale, Functional Ladies) + gallery 4 foto studio |
 | `#filosofia` | Filosofia | Testo filosofia + 4 fact-pill (es. gruppi piccoli, senza giudizi…) |
-| `#team` | Istruttrici | 2 card istruttrice (Samantha, Chiara) con foto e bio |
+| `#team` | Istruttrice | 1 card istruttrice (Samantha) con foto e bio |
 | `#orari` | Orari | Dual mode: mobile cards + desktop table; Lu–Sa |
 | `#faq` | FAQ | 6 domande con `<details>/<summary>` nativo |
 | `#recensioni` | Recensioni | Slider 2 modalità: desktop 3 card/2 pagine, mobile 1 card/6 pagine. Swipe touch. Dot dinamici via JS. 6 recensioni Google reali con nome e corso frequentato. |
@@ -111,7 +111,7 @@ Pagina legale con `noindex`. 10 sottosezioni (Chi siamo, Dati raccolti, Finalit�
 | `spogliatoi.webp` | WebP | Gallery |
 | `sala.webp` | WebP | Gallery |
 | `samantha.jpg` | JPG | Istruttrice Samantha |
-| `chiara.jpeg` | JPEG | Istruttrice Chiara (usata in HTML) |
+| `chiara.jpeg` | JPEG | ⚠️ Non usata in HTML |
 | `chiara.jpg` | JPG | ⚠️ Duplicato chiara |
 | `chiara_risultato.webp` | WebP | ⚠️ Terza versione chiara — non rilevata in HTML |
 | `zenith-logo-clean.png` | PNG | Logo header |
@@ -128,9 +128,9 @@ Pagina legale con `noindex`. 10 sottosezioni (Chi siamo, Dati raccolti, Finalit�
 
 | Check | Stato | Note |
 |-------|-------|------|
-| `<title>` | ✅ | "Pilates · Yoga · Functional Lady a Forlì \| ASD Zenith" |
+| `<title>` | ✅ | "Pilates · Ginnastica posturale · Functional Ladies a Forlì \| ASD Zenith" |
 | `meta description` | ✅ | Presente e compilata con keyword locali |
-| H1 con keyword | ✅ | "Pilates e Yoga a Forlì, zona Stadio" |
+| H1 con keyword | ✅ | "Pilates e Ginnastica posturale a Forlì, zona Stadio" |
 | Alt text immagini | ✅ | Tutti presenti; decorativi con `aria-hidden="true"` |
 | Schema.org | ✅ | `SportsActivityLocation` con indirizzo, tel, sport, orari |
 | Canonical | ✅ | URL assoluto corretto |
